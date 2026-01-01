@@ -3,25 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mahmoud Medhat Sadeq | M.OPI.M</title>
+  <title>موقع محمود مدحت صدق | M.OPI.M</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --primary: #1a1a2e;
       --secondary: #16213e;
-      --accent: #0f3460;
-      --light: #e6e6e6;
       --highlight: #f1c40f;
+      --light: #e6e6e6;
       --transition: all 0.3s ease;
-      --positive: #2ecc71;
-      --neutral: #f39c12;
-      --negative: #e74c3c;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
     }
     
     body {
@@ -30,7 +20,6 @@
       color: var(--light);
       background: var(--primary);
       overflow-x: hidden;
-      line-height: 1.6;
     }
     
     /* الخلفية المتحركة */
@@ -44,19 +33,8 @@
       opacity: 0.15;
       z-index: -2;
     }
-    
-    /* طبقة التعتيم */
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(10, 10, 20, 0.95) 0%, rgba(22, 33, 62, 0.95) 100%);
-      z-index: -1;
-    }
-    
-    /* شريط اللغات */
+
+    /* شريط تغيير اللغة */
     .language-bar {
       position: absolute;
       top: 20px;
@@ -65,7 +43,7 @@
       gap: 10px;
       z-index: 100;
     }
-    
+
     .language-btn {
       background: transparent;
       border: none;
@@ -75,24 +53,14 @@
       height: 30px;
       border-radius: 4px;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
-    
+
     .language-btn img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    
-    .language-btn:hover {
-      transform: translateY(-3px);
-    }
-    
-    .language-btn.active {
-      border: 2px solid var(--highlight);
-      transform: scale(1.05);
-    }
-    
+
     /* الترويسة */
     header {
       background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
@@ -102,606 +70,90 @@
       position: relative;
       z-index: 10;
     }
-    
-    .profile-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      position: relative;
-    }
-    
-    .profile-pic {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--highlight);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-      transition: var(--transition);
-      position: relative;
-      z-index: 15;
-    }
-    
-    .profile-pic:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
-    }
-    
-    /* تأثيرات إضافية للكوكب */
-    .profile-pic::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 60%);
-      z-index: 15;
-      pointer-events: none;
-    }
-    
-    .profile-pic::before {
-      content: '';
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      right: -10px;
-      bottom: -10px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-      z-index: 10;
-      pointer-events: none;
-      animation: planet-glow 4s ease-in-out infinite alternate;
-    }
-    
-    @keyframes planet-glow {
-      0% { opacity: 0.3; }
-      100% { opacity: 0.7; }
-    }
-    
-    /* فقاعة شعار MahWay كقمر يدور */
-    .mahway-bubble {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 50px;
-      height: 50px;
-      margin: -25px 0 0 -25px;
-      background: var(--highlight);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 15px rgba(241, 196, 15, 0.7);
-      transition: var(--transition);
-      z-index: 20;
-      cursor: pointer;
-      animation: 
-        orbit 15s linear infinite,
-        bubble-pulse 2s infinite;
-    }
-    
-    .mahway-bubble:hover {
-      animation-play-state: paused;
-      transform: scale(1.2);
-      box-shadow: 0 0 25px rgba(241, 196, 15, 0.9);
-    }
-    
-    .mahway-bubble:active {
-      transform: scale(0.95);
-    }
-    
-    .mahway-bubble img {
-      width: 35px;
-      height: 35px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.9));
-    }
-    
-    @keyframes orbit {
-      0% {
-        transform: rotate(0deg) translateX(110px) rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg) translateX(110px) rotate(-360deg);
-      }
-    }
-    
-    @keyframes bubble-pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-    
+
     header h1 {
-      margin: 10px 0 5px;
       font-size: 2.5rem;
-      background: linear-gradient(to right, var(--highlight), #ffffff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      color: var(--highlight);
     }
-    
+
     header p {
-      margin: 0;
       font-size: 1.3rem;
-      color: #ccc;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    
-    /* علامات التبويب */
-    .tabs {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 25px 0;
-    }
-    
-    .tab-btn {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
       color: var(--light);
-      padding: 10px 25px;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: var(--transition);
-      font-size: 1rem;
-      font-weight: 600;
     }
-    
-    .tab-btn:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-    
-    .tab-btn.active {
-      background: var(--highlight);
-      color: var(--primary);
-      border-color: var(--highlight);
-    }
-    
-    /* الأقسام */
-    section {
-      padding: 20px;
-      max-width: 1000px;
-      margin: 20px auto;
-      display: none;
-      background: rgba(10, 15, 30, 0.7);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-    
-    section.active {
-      display: block;
-      animation: fadeIn 0.5s ease;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    section h2 {
-      color: var(--highlight);
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    section h2 i {
-      font-size: 1.4rem;
-    }
-    
-    /* قسم المهارات */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 15px;
-    }
-    
-    .skill-card {
-      background: rgba(15, 52, 96, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+
+    /* التعليقات */
+    #comments {
+      padding: 30px;
+      background: rgba(10, 10, 20, 0.9);
       border-radius: 10px;
-      padding: 15px;
-      text-align: center;
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
+      max-width: 800px;
+      margin: 20px auto;
     }
-    
-    .skill-card:hover {
-      transform: translateY(-5px);
-      background: rgba(15, 52, 96, 0.8);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      border-color: var(--highlight);
-    }
-    
-    .skill-icon {
-      font-size: 2.5rem;
+
+    #comments h2 {
+      font-size: 1.8rem;
       color: var(--highlight);
+      margin-bottom: 20px;
     }
-    
-    /* نموذج طلب الخدمة */
-    form label {
-      display: block;
-      margin: 15px 0 8px;
-      font-weight: 500;
-      color: #ddd;
+
+    #comments .new-comment {
+      margin-top: 20px;
     }
-    
-    .required {
-      color: var(--highlight);
-    }
-    
-    form input, form select, form textarea {
+
+    #comments textarea {
       width: 100%;
-      padding: 12px 15px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 12px;
       border-radius: 8px;
-      background: rgba(0, 0, 0, 0.3);
+      background: #333;
       color: var(--light);
       font-size: 1rem;
-      transition: var(--transition);
     }
-    
-    form input:focus, form select:focus, form textarea:focus {
-      outline: none;
-      border-color: var(--highlight);
-      box-shadow: 0 0 0 2px rgba(241, 196, 15, 0.3);
-    }
-    
-    form button {
-      margin-top: 20px;
-      padding: 12px 25px;
+
+    #comments button {
       background: var(--highlight);
       color: var(--primary);
+      padding: 12px 20px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      margin-top: 10px;
     }
-    
-    form button:hover {
-      background: #ffd700;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(241, 196, 15, 0.3);
+
+    #comments button:hover {
+      background: #f39c12;
     }
-    
-    form button:disabled {
-      background: #555;
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
-    }
-    
-    .countdown {
-      display: block;
-      margin-top: 8px;
-      font-size: 0.85rem;
-      color: #aaa;
-      text-align: center;
-    }
-    
-    /* قسم التعليقات */
-    .comments-container {
-      position: relative;
-    }
-    
-    .comments-count {
-      position: relative;
-      display: block;
-      margin: 20px 0;
-      padding: 10px 15px;
-      background: rgba(15, 52, 96, 0.5);
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 1.1rem;
-      text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .comments-count span {
-      color: var(--highlight);
-      font-size: 1.3rem;
-      margin: 0 5px;
-    }
-    
+
+    /* التعليقات الديناميكية */
     .comment {
-      background: rgba(15, 52, 96, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(15, 52, 96, 0.5);
       border-radius: 10px;
       padding: 15px;
-      margin-bottom: 15px;
-      transition: var(--transition);
-      position: relative;
-    }
-    
-    .comment:hover {
-      background: rgba(15, 52, 96, 0.5);
-      border-color: rgba(255, 255, 255, 0.3);
-    }
-    
-    .comment .date {
-      display: block;
-      font-size: 0.85rem;
-      color: #aaa;
-      margin-bottom: 8px;
-    }
-    
-    .comment .rating {
-      display: flex;
-      gap: 5px;
       margin-bottom: 10px;
+      color: var(--light);
     }
-    
-    .comment .star {
-      color: #ccc;
-      font-size: 1.1rem;
+
+    .comment .date {
+      font-size: 0.9rem;
+      color: #aaa;
     }
-    
-    .comment .star.active {
-      color: var(--highlight);
-    }
-    
-    .comment .star.positive {
-      color: var(--positive);
-    }
-    
-    .comment .star.neutral {
-      color: var(--neutral);
-    }
-    
-    .comment .star.negative {
-      color: var(--negative);
-    }
-    
-    .new-comment {
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .rating {
-      display: flex;
-      gap: 5px;
-      margin: 10px 0;
-      justify-content: center;
-    }
-    
-    .star {
-      color: #ccc;
-      cursor: pointer;
-      transition: var(--transition);
-      font-size: 1.3rem;
-    }
-    
-    .star.active, .star.hovered {
-      color: var(--highlight);
-    }
-    
+
     /* التذييل */
     footer {
       text-align: center;
-      padding: 25px 20px;
+      padding: 20px;
       color: #aaa;
       font-size: 0.9rem;
-      margin-top: 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
-    
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 15px;
-    }
-    
-    .social-links a {
-      color: #ddd;
-      font-size: 1.5rem;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-    }
-    
-    .social-links a:hover {
-      color: var(--highlight);
-      transform: translateY(-3px);
-      background: rgba(241, 196, 15, 0.1);
-    }
-    
-    /* تصميم متجاوب */
-    @media (max-width: 768px) {
-      .tabs {
-        flex-wrap: wrap;
-      }
-      
-      .skills-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      }
-      
-      header h1 {
-        font-size: 2rem;
-      }
-      
-      header p {
-        font-size: 1.1rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .profile-pic {
-        width: 140px;
-        height: 140px;
-      }
-      
-      .tab-btn {
-        padding: 8px 15px;
-        font-size: 0.9rem;
-      }
-      
-      section {
-        padding: 15px;
-        margin: 15px;
-      }
-      
-      .social-links a {
-        width: 40px;
-        height: 40px;
-        font-size: 1.3rem;
-      }
-      
-      .mahway-bubble {
-        width: 40px;
-        height: 40px;
-      }
-      
-      .mahway-bubble img {
-        width: 25px;
-        height: 25px;
-      }
-    }
-    
-    /* رسائل التأكيد */
-    .confirmation-dialog {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-    
-    .confirmation-dialog.active {
-      opacity: 1;
-      visibility: visible;
-    }
-    
-    .dialog-content {
-      background: var(--secondary);
-      border-radius: 15px;
-      padding: 30px;
-      max-width: 500px;
-      width: 90%;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      border: 1px solid var(--highlight);
-    }
-    
-    .dialog-content h3 {
-      color: var(--highlight);
-      margin-bottom: 20px;
-      font-size: 1.5rem;
-    }
-    
-    .dialog-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 20px;
-    }
-    
-    .dialog-button {
-      padding: 10px 25px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: var(--transition);
-    }
-    
-    .dialog-confirm {
-      background: var(--highlight);
-      color: var(--primary);
-    }
-    
-    .dialog-cancel {
-      background: transparent;
-      color: var(--light);
-      border: 1px solid var(--light);
-    }
-    
-    .dialog-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-    
-    /* رسالة النجاح */
-    .success-message {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: rgba(15, 52, 96, 0.9);
-      border-left: 4px solid var(--highlight);
-      padding: 15px 25px;
-      border-radius: 5px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      z-index: 1000;
-      transform: translateX(120%);
-      transition: transform 0.5s ease;
-    }
-    
-    .success-message.show {
-      transform: translateX(0);
-    }
-    
-    .success-message i {
-      color: var(--highlight);
-      font-size: 1.5rem;
-    }
-    
-    /* عد تنازلي */
-    .countdown-box {
-      display: inline-block;
-      padding: 5px 10px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 4px;
-      font-size: 0.9rem;
-      margin-top: 5px;
-    }
+
   </style>
 </head>
 <body>
   <!-- خلفية متحركة -->
   <div class="gif-background"></div>
-  <div class="overlay"></div>
-  
+
   <!-- شريط تغيير اللغة -->
   <div class="language-bar">
-    <button class="language-btn active" onclick="changeLanguage('ar')">
+    <button class="language-btn" onclick="changeLanguage('ar')">
       <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg" alt="علم مصر">
     </button>
     <button class="language-btn" onclick="changeLanguage('en')">
@@ -709,653 +161,90 @@
     </button>
   </div>
 
+  <!-- الترويسة -->
   <header>
-    <div class="profile-container">
-      <img class="profile-pic" src="https://img.pikbest.com/png-images/mexican-floral-skull-vector-graphic-element_1520067.png!w700wp" alt="صورة محمود مدحت صدق">
-      
-      <!-- فقاعة شعار MahWay كقمر يدور -->
-      <a href="https://mahway-official.github.io/MahWay/" class="mahway-bubble" target="_blank">
-        <img src="https://raw.githubusercontent.com/MahWay26/MahWay/refs/heads/main/027187e0-e47c-4b04-b0fc-4104a213cc6b.png" alt="شعار MahWay">
-      </a>
-      
-      <h1 id="name-title">Mahmoud Medhat Sadeq</h1>
-      <p id="title-desc">M.OPI.M</p>
-    </div>
-    
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="skills" id="skills-tab">المهارات</button>
-      <button class="tab-btn" data-tab="services" id="services-tab">طلب خدمة</button>
-      <button class="tab-btn" data-tab="comments" id="comments-tab">آراء العملاء</button>
-    </div>
+    <h1>محمود مدحت صدق</h1>
+    <p>المعروف بـ M.OPI.M - مصمم جرافيك، مبرمج، ومونتير</p>
   </header>
 
-  <section id="skills" class="active">
-    <h2><i class="fas fa-code"></i> <span id="skills-title">المهارات</span></h2>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <i class="fab fa-html5 skill-icon"></i>
-        <h3>HTML</h3>
-      </div>
-      <div class="skill-card">
-        <i class="fab fa-css3-alt skill-icon"></i>
-        <h3>CSS</h3>
-      </div>
-      <div class="skill-card">
-        <i class="fab fa-js skill-icon"></i>
-        <h3>JavaScript</h3>
-      </div>
-      <div class="skill-card">
-        <i class="fab fa-python skill-icon"></i>
-        <h3>Python</h3>
-      </div>
-      <div class="skill-card">
-        <i class="fas fa-copyright skill-icon"></i>
-        <h3>++C</h3>
-      </div>
-      <div class="skill-card">
-        <i class="fab fa-java skill-icon"></i>
-        <h3>Java</h3>
-      </div>
-      <div class="skill-card">
-        <i class="fas fa-paint-brush skill-icon"></i>
-        <h3>Photoshop</h3>
-      </div>
-      <div class="skill-card">
-        <i class="fas fa-cube skill-icon"></i>
-        <h3>Blender</h3>
-      </div>
-      <div class="skill-card">
-        <i class="fas fa-film skill-icon"></i>
-        <h3>Premiere</h3>
-      </div>
-      <div class="skill-card">
-        <i class="fas fa-video skill-icon"></i>
-        <h3>After Effects</h3>
-      </div>
-    </div>
-  </section>
-
-  <section id="services">
-    <h2><i class="fas fa-handshake"></i> <span id="services-title">طلب خدمة</span></h2>
-    <form id="serviceForm">
-      <label for="name"><span id="name-label">الاسم أو اسم الشركة</span> <span class="required">*</span></label>
-      <input type="text" id="name" name="name" required placeholder="اسمك أو اسم شركتك">
-      
-      <label for="phone"><span id="phone-label">رقم الهاتف</span> <span class="required">*</span></label>
-      <input type="tel" id="phone" name="phone" required placeholder="مثال: 01XXXXXXXX">
-      
-      <label for="email"><span id="email-label">البريد الإلكتروني</span> <span class="required">*</span></label>
-      <input type="email" id="email" name="email" required placeholder="example@domain.com">
-      
-      <label for="service"><span id="service-label">نوع الخدمة</span> <span class="required">*</span></label>
-      <select id="service" name="service" required>
-        <option value="">-- <span id="choose-service">اختر نوع الخدمة</span> --</option>
-        <option value="سريعة">سريعة (تسليم خلال 48 ساعة)</option>
-        <option value="عادية">عادية (تسليم خلال أسبوع)</option>
-        <option value="مخصصة">مخصصة (تسليم خلال أسبوعين)</option>
-      </select>
-      
-      <label for="message"><span id="details-label">تفاصيل الخدمة المطلوبة</span> <span class="required">*</span></label>
-      <textarea id="message" name="message" rows="5" required placeholder="أخبرنا بالتفاصيل التي تحتاجها..."></textarea>
-      
-      <button type="submit" id="submitBtn"><i class="fas fa-paper-plane"></i> <span id="submit-label">إرسال الطلب</span></button>
-      <div id="serviceCountdown" class="countdown"></div>
-    </form>
-  </section>
-
+  <!-- قسم التعليقات -->
   <section id="comments">
-    <h2><i class="fas fa-comments"></i> <span id="comments-title">آراء العملاء</span></h2>
-    
+    <h2>آراء العملاء</h2>
     <div class="comments-container" id="commentsContainer">
       <!-- التعليقات سيتم إضافتها ديناميكياً -->
     </div>
-    
-    <!-- عدد التعليقات أسفل التعليقات -->
-    <div class="comments-count">
-      <span id="comments-count-label">عدد التعليقات:</span> <span id="commentsCount">1341</span>
-    </div>
 
     <div class="new-comment">
-      <h3 id="add-comment-title">اكتب تعليقك</h3>
+      <h3>اكتب ملاحظتك</h3>
       <form id="commentForm">
-        <label id="rating-label">تقييمك</label>
-        <div class="rating" id="rating">
-          <i class="star fas fa-star" data-rating="1"></i>
-          <i class="star fas fa-star" data-rating="2"></i>
-          <i class="star fas fa-star" data-rating="3"></i>
-          <i class="star fas fa-star" data-rating="4"></i>
-          <i class="star fas fa-star" data-rating="5"></i>
-        </div>
-        
-        <label for="userComment" id="comment-label">تعليقك</label>
-        <textarea id="userComment" required rows="3" placeholder="شاركنا تجربتك..."></textarea>
-        
-        <button type="submit" id="commentBtn"><i class="fas fa-comment"></i> <span id="comment-submit-label">إرسال التعليق</span></button>
-        <div id="commentCountdown" class="countdown"></div>
+        <textarea id="userComment" required rows="3" placeholder="شاركنا ملاحظتك..."></textarea>
+        <button type="submit" id="commentBtn"><i class="fas fa-comment"></i> إرسال الملاحظة</button>
       </form>
     </div>
   </section>
-  
+
+  <!-- التذييل -->
   <footer>
-    <p id="copyright">جميع الحقوق محفوظة &copy; 2025 | Mahmoud Medhat Sadeq (M.OPI.M)</p>
-    <div class="social-links">
-      <a href="https://api.whatsapp.com/send/?phone=201044727702&text&type=phone_number&app_absent=0" target="_blank" title="واتساب">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-      <a href="mailto:mm284817@gmail.com" title="البريد الإلكتروني">
-        <i class="fas fa-envelope"></i>
-      </a>
-      <a href="https://t.me/MahmoudMedhatOfficial" target="_blank" title="تلجرام">
-        <i class="fab fa-telegram"></i>
-      </a>
-      <a href="https://discord.gg/mGVSwDsx" target="_blank" title="ديسكورد">
-        <i class="fab fa-discord"></i>
-      </a>
-      <a href="https://www.facebook.com/mahmoud.opi.777" target="_blank" title="فيسبوك">
-        <i class="fab fa-facebook"></i>
-      </a>
-    </div>
+    <p>&copy; 2025 جميع الحقوق محفوظة | Mahmoud Medhat Sadeq</p>
   </footer>
 
-  <!-- رسالة التأكيد -->
-  <div class="confirmation-dialog" id="confirmationDialog">
-    <div class="dialog-content">
-      <h3><i class="fas fa-question-circle"></i> <span id="confirm-title">تأكيد الإرسال</span></h3>
-      <p id="confirm-message">هل أنت متأكد أنك تريد إرسال طلب الخدمة؟</p>
-      <div class="dialog-buttons">
-        <button class="dialog-button dialog-confirm" onclick="confirmService()"><span id="confirm-yes">نعم، أرسل</span></button>
-        <button class="dialog-button dialog-cancel" onclick="cancelService()"><span id="confirm-cancel">إلغاء</span></button>
-      </div>
-    </div>
-  </div>
-  
-  <!-- رسالة النجاح -->
-  <div class="success-message" id="successMessage">
-    <i class="fas fa-check-circle"></i>
-    <div>
-      <strong id="success-title">تم الإرسال بنجاح!</strong>
-      <p id="success-message">شكرًا لك، تم استلام طلبك/تعليقك بنجاح.</p>
-    </div>
-  </div>
-
   <script>
-    // نظام التبويبات
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const sections = document.querySelectorAll('section');
-    
-    tabButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        // إزالة النشط من جميع الأزرار والأقسام
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        sections.forEach(section => section.classList.remove('active'));
-        
-        // إضافة النشط للزر المختار والقسم المقابل
-        button.classList.add('active');
-        const tabId = button.getAttribute('data-tab');
-        document.getElementById(tabId).classList.add('active');
-      });
-    });
-    
-    // نظام التقييم بالنجوم
-    const stars = document.querySelectorAll('.star');
-    let selectedRating = 0;
-    
-    // تفاعل النجوم عند المرور فوقها
-    stars.forEach(star => {
-      // عند المرور فوق نجمة
-      star.addEventListener('mouseover', () => {
-        const rating = parseInt(star.getAttribute('data-rating'));
-        
-        stars.forEach(s => {
-          const sRating = parseInt(s.getAttribute('data-rating'));
-          if (sRating <= rating) {
-            s.classList.add('hovered');
-          } else {
-            s.classList.remove('hovered');
-          }
-        });
-      });
-      
-      // عند الخروج من النجوم
-      star.addEventListener('mouseout', () => {
-        stars.forEach(s => {
-          s.classList.remove('hovered');
-        });
-      });
-      
-      // عند النقر على نجمة
-      star.addEventListener('click', () => {
-        const rating = parseInt(star.getAttribute('data-rating'));
-        selectedRating = rating;
-        
-        stars.forEach(s => {
-          const sRating = parseInt(s.getAttribute('data-rating'));
-          if (sRating <= rating) {
-            s.classList.add('active');
-          } else {
-            s.classList.remove('active');
-          }
-        });
-      });
-    });
-    
-    // التحقق من وقت الإرسال السابق
-    function checkLastSubmissionTime(type) {
-      const lastTime = localStorage.getItem(`${type}LastTime`);
-      if (!lastTime) return true;
-      
-      const now = new Date().getTime();
-      const twelveHours = 12 * 60 * 60 * 1000;
-      
-      return (now - lastTime) >= twelveHours;
-    }
-    
-    // تحديث وقت الإرسال
-    function updateSubmissionTime(type) {
-      localStorage.setItem(`${type}LastTime`, new Date().getTime());
-    }
-    
-    // إظهار رسالة النجاح
-    function showSuccessMessage() {
-      const message = document.getElementById('successMessage');
-      message.classList.add('show');
-      
-      setTimeout(() => {
-        message.classList.remove('show');
-      }, 5000);
-    }
-    
-    // تنسيق الوقت
-    function formatTime(seconds) {
-      const hrs = Math.floor(seconds / 3600);
-      const mins = Math.floor((seconds % 3600) / 60);
-      const secs = seconds % 60;
-      
-      return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-    }
-    
-    // تحديث العد التنازلي
-    function updateCountdown(type) {
-      const lastTime = localStorage.getItem(`${type}LastTime`);
-      if (!lastTime) return;
-      
-      const now = new Date().getTime();
-      const twelveHours = 12 * 60 * 60 * 1000;
-      const remainingTime = Math.max(0, Math.floor((twelveHours - (now - lastTime)) / 1000));
-      
-      const countdownElement = document.getElementById(`${type}Countdown`);
-      
-      if (remainingTime > 0) {
-        countdownElement.innerHTML = `${type === 'service' ? document.getElementById('wait-service').textContent : document.getElementById('wait-comment').textContent} <span class="countdown-box">${formatTime(remainingTime)}</span>`;
-      } else {
-        countdownElement.innerHTML = '';
-        document.getElementById(type === 'service' ? 'submitBtn' : 'commentBtn').disabled = false;
-        document.getElementById(type === 'service' ? 'submitBtn' : 'commentBtn').innerHTML = 
-          type === 'service' 
-            ? `<i class="fas fa-paper-plane"></i> ${document.getElementById('submit-label').textContent}` 
-            : `<i class="fas fa-comment"></i> ${document.getElementById('comment-submit-label').textContent}`;
-      }
-    }
-    
-    // إضافة تعليق إلى القائمة
-    function addCommentToContainer(commentData) {
-      const commentContainer = document.createElement("div");
-      commentContainer.className = "comment";
-      
-      let starsHTML = '';
-      for (let i = 1; i <= 5; i++) {
-        if (i <= commentData.rating) {
-          if (commentData.rating >= 4) {
-            starsHTML += '<i class="star fas fa-star active positive"></i>';
-          } else if (commentData.rating >= 3) {
-            starsHTML += '<i class="star fas fa-star active neutral"></i>';
-          } else {
-            starsHTML += '<i class="star fas fa-star active negative"></i>';
-          }
-        } else {
-          starsHTML += '<i class="star fas fa-star"></i>';
-        }
-      }
-      
-      commentContainer.innerHTML = `
-        <span class="date">${commentData.date}</span>
-        <div class="rating">${starsHTML}</div>
-        <p>${commentData.text}</p>
-      `;
-      
-      // إضافة التعليق الجديد في الأعلى
-      const commentsContainer = document.getElementById("commentsContainer");
-      commentsContainer.insertBefore(commentContainer, commentsContainer.firstChild);
-    }
-    
-    // إضافة التعليقات
-    function handleComment(e) {
-      e.preventDefault();
-      
-      // التحقق من الوقت المنقضي
-      if (!checkLastSubmissionTime('comment')) {
-        alert(document.getElementById('comment-wait-alert').textContent);
-        return false;
-      }
-      
-      const commentText = document.getElementById("userComment").value;
-      
-      // التحقق من وجود محتوى في التعليق
-      if (!commentText.trim()) {
-        alert(document.getElementById('comment-empty-alert').textContent);
-        return false;
-      }
-      
-      if (selectedRating === 0) {
-        alert("الرجاء اختيار تقييم قبل الإرسال");
-        return false;
-      }
-      
-      const today = new Date();
-      const dateString = today.toLocaleDateString("ar-EG", { 
-        day: 'numeric', 
-        month: 'long', 
-        year: 'numeric' 
-      });
-      
-      const commentData = {
-        text: commentText,
-        rating: selectedRating,
-        date: dateString
-      };
-      
-      // حفظ التعليق في localStorage
-      saveCommentToStorage(commentData);
-      
-      // إضافة التعليق إلى القائمة
-      addCommentToContainer(commentData);
-      
-      // تحديث وقت الإرسال
-      updateSubmissionTime('comment');
-      
-      // إظهار رسالة النجاح
-      showSuccessMessage();
-      
-      // إعادة تعيين النموذج
-      e.target.reset();
-      
-      // إعادة تعيين النجوم
-      stars.forEach(star => star.classList.remove('active'));
-      selectedRating = 0;
-      
-      // تعطيل الزر وإظهار العد التنازلي
-      const commentBtn = document.getElementById('commentBtn');
-      commentBtn.disabled = true;
-      commentBtn.innerHTML = `<i class="fas fa-clock"></i> ${document.getElementById('wait-comment').textContent}`;
-      
-      // بدء العد التنازلي
-      setInterval(() => updateCountdown('comment'), 1000);
-      
-      return false;
-    }
-    
-    // إزالة أقدم تعليق إذا تجاوز العدد 3
-    function removeOldestCommentIfNeeded() {
-      const comments = JSON.parse(localStorage.getItem('comments')) || [];
-      if (comments.length > 3) {
-        // إزالة آخر تعليق (الأقدم)
-        comments.pop();
-        localStorage.setItem('comments', JSON.stringify(comments));
-      }
-      
-      // إعادة تحميل التعليقات (سيعرض فقط 3 تعليقات)
-      loadCommentsFromStorage();
-    }
-    
-    // حفظ التعليق في localStorage
-    function saveCommentToStorage(comment) {
-      let comments = JSON.parse(localStorage.getItem('comments')) || [];
-      comments.unshift(comment); // إضافة التعليق الجديد في البداية
-      localStorage.setItem('comments', JSON.stringify(comments));
-    }
-    
-    // تحميل التعليقات من localStorage
-    function loadCommentsFromStorage() {
-      const comments = JSON.parse(localStorage.getItem('comments')) || [];
-      const commentsContainer = document.getElementById("commentsContainer");
-      
-      // مسح التعليقات الحالية
-      commentsContainer.innerHTML = '';
-      
-      // إضافة التعليقات الوهمية الأولية
-      if (comments.length === 0) {
-        const fakeComments = [
-          {
-            text: "الراجل ده شغله تحفة فعلًا خلص الفيديو في أقل من يومين وطلع شكل تاني خالص!",
-            rating: 5,
-            date: "1 يوليو 2025"
-          },
-          {
-            text: "ممتاز جدًا في التعامل وشغله احترافي أنصح أي حد يشتغل معاه.",
-            rating: 4,
-            date: "29 يونيو 2025"
-          },
-          {
-            text: "بصراحة مشيت من عنده بسبب طريقته في التعامل صعبه بس شغله حلو.",
-            rating: 3,
-            date: "25 يونيو 2025"
-          }
-        ];
-        
-        fakeComments.forEach(comment => {
-          saveCommentToStorage(comment);
-        });
-        
-        // إعادة تحميل التعليقات بعد الإضافة
-        return loadCommentsFromStorage();
-      }
-      
-      // عرض آخر 3 تعليقات فقط
-      const recentComments = comments.slice(0, 3);
-      recentComments.forEach(comment => {
-        addCommentToContainer(comment);
-      });
-    }
-    
-    // تحديث عدد التعليقات
-    function updateCommentsCount() {
-      document.getElementById('commentsCount').textContent = "1341";
-    }
-    
-    // خدمة طلب الخدمة
-    const serviceForm = document.getElementById('serviceForm');
-    const confirmationDialog = document.getElementById('confirmationDialog');
-    const submitBtn = document.getElementById('submitBtn');
-    
-    serviceForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      // التحقق من الوقت المنقضي
-      if (!checkLastSubmissionTime('service')) {
-        alert(document.getElementById('service-wait-alert').textContent);
-        return false;
-      }
-      
-      // التحقق من صحة النموذج
-      if (!serviceForm.checkValidity()) {
-        alert(document.getElementById('required-alert').textContent);
-        return false;
-      }
-      
-      // إظهار رسالة التأكيد
-      confirmationDialog.classList.add('active');
-    });
-    
-    function confirmService() {
-      // تحديث وقت الإرسال
-      updateSubmissionTime('service');
-      
-      // إظهار رسالة النجاح
-      showSuccessMessage();
-      
-      // إخفاء رسالة التأكيد
-      confirmationDialog.classList.remove('active');
-      
-      // إعادة تعيين النموذج
-      serviceForm.reset();
-      
-      // تعطيل الزر وإظهار العد التنازلي
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `<i class="fas fa-clock"></i> ${document.getElementById('wait-service').textContent}`;
-      
-      // بدء العد التنازلي
-      setInterval(() => updateCountdown('service'), 1000);
-    }
-    
-    function cancelService() {
-      confirmationDialog.classList.remove('active');
-    }
-    
-    // نظام الترجمة
+    // التعامل مع التبديل بين اللغات
     const translations = {
       ar: {
-        "name-title": "Mahmoud Medhat Sadeq",
+        "name-title": "محمود مدحت صدق",
         "title-desc": "المعروف بـ M.OPI.M - مصمم جرافيك، مبرمج، ومونتير",
-        "skills-tab": "المهارات",
-        "services-tab": "طلب خدمة",
-        "comments-tab": "آراء العملاء",
-        "skills-title": "المهارات",
-        "services-title": "طلب خدمة",
-        "name-label": "الاسم أو اسم الشركة",
-        "phone-label": "رقم الهاتف",
-        "email-label": "البريد الإلكتروني",
-        "service-label": "نوع الخدمة",
-        "choose-service": "اختر نوع الخدمة",
-        "fast-service": "سريعة (تسليم خلال 48 ساعة)",
-        "normal-service": "عادية (تسليم خلال أسبوع)",
-        "custom-service": "مخصصة (تسليم خلال أسبوعين)",
-        "details-label": "تفاصيل الخدمة المطلوبة",
-        "submit-label": "إرسال الطلب",
         "comments-title": "آراء العملاء",
-        "comments-count-label": "عدد التعليقات:",
-        "add-comment-title": "اكتب تعليقك",
-        "rating-label": "تقييمك",
-        "comment-label": "تعليقك",
-        "comment-submit-label": "إرسال التعليق",
-        "copyright": "جميع الحقوق محفوظة &copy; 2025 | Mahmoud Medhat Sadeq (M.OPI.M)",
-        "confirm-title": "تأكيد الإرسال",
-        "confirm-message": "هل أنت متأكد أنك تريد إرسال طلب الخدمة؟",
-        "confirm-yes": "نعم، أرسل",
-        "confirm-cancel": "إلغاء",
-        "success-title": "تم الإرسال بنجاح!",
-        "success-message": "شكرًا لك، تم استلام طلبك/تعليقك بنجاح.",
-        "required-alert": "الرجاء ملء جميع الحقول الإلزامية",
-        "service-wait-alert": "لقد قمت بإرسال طلب خدمة بالفعل. يمكنك إرسال طلب جديد بعد مرور 12 ساعة.",
-        "comment-wait-alert": "لقد أضفت تعليق بالفعل. يمكنك إضافة تعليق جديد بعد مرور 12 ساعة.",
-        "comment-empty-alert": "الرجاء كتابة تعليق قبل الإرسال",
-        "wait-service": "انتظر 12 ساعة للإرسال",
-        "wait-comment": "انتظر 12 ساعة للإرسال"
+        "comment-label": "ملاحظتك",
+        "comment-submit-label": "إرسال الملاحظة",
+        "confirm-title": "تأكيد الإرسال"
       },
       en: {
         "name-title": "Mahmoud Medhat Sadeq",
         "title-desc": "Known as M.OPI.M - Graphic Designer, Programmer, and Editor",
-        "skills-tab": "Skills",
-        "services-tab": "Request Service",
-        "comments-tab": "Customer Reviews",
-        "skills-title": "Skills",
-        "services-title": "Request Service",
-        "name-label": "Name or Company Name",
-        "phone-label": "Phone Number",
-        "email-label": "Email",
-        "service-label": "Service Type",
-        "choose-service": "Choose Service Type",
-        "fast-service": "Fast (Delivery within 48 hours)",
-        "normal-service": "Normal (Delivery within a week)",
-        "custom-service": "Custom (Delivery within 2 weeks)",
-        "details-label": "Required Service Details",
-        "submit-label": "Submit Request",
         "comments-title": "Customer Reviews",
-        "comments-count-label": "Total Comments:",
-        "add-comment-title": "Write Your Comment",
-        "rating-label": "Your Rating",
         "comment-label": "Your Comment",
         "comment-submit-label": "Submit Comment",
-        "copyright": "All Rights Reserved &copy; 2025 | Mahmoud Medhat Sadeq (M.OPI.M)",
-        "confirm-title": "Confirm Submission",
-        "confirm-message": "Are you sure you want to submit the service request?",
-        "confirm-yes": "Yes, Submit",
-        "confirm-cancel": "Cancel",
-        "success-title": "Submitted Successfully!",
-        "success-message": "Thank you, your request/comment has been received successfully.",
-        "required-alert": "Please fill in all required fields",
-        "service-wait-alert": "You have already submitted a service request. You can submit a new request after 12 hours.",
-        "comment-wait-alert": "You have already added a comment. You can add a new comment after 12 hours.",
-        "comment-empty-alert": "Please write a comment before submitting",
-        "wait-service": "Wait 12 hours to submit",
-        "wait-comment": "Wait 12 hours to submit"
+        "confirm-title": "Confirm Submission"
       }
     };
-    
+
     // تغيير اللغة
     function changeLanguage(lang) {
-      const buttons = document.querySelectorAll('.language-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
-      event.target.closest('.language-btn').classList.add('active');
-      
-      // تغيير اتجاه الصفحة
       document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
       document.documentElement.lang = lang;
-      
-      // تحديث النصوص
-      Object.keys(translations[lang]).forEach(key => {
-        const element = document.getElementById(key);
-        if (element) {
-          if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-            element.placeholder = translations[lang][key];
-          } else {
-            element.textContent = translations[lang][key];
-          }
+      const elements = document.querySelectorAll('[id]');
+      elements.forEach(el => {
+        const id = el.id;
+        if (translations[lang][id]) {
+          el.textContent = translations[lang][id];
         }
       });
     }
-    
-    // تعطير الأزرار عند التحميل
-    document.addEventListener('DOMContentLoaded', () => {
-      // إضافة عناصر خفية للترجمة
-      const hiddenElements = document.createElement('div');
-      hiddenElements.style.display = 'none';
-      hiddenElements.innerHTML = `
-        <span id="required-alert">الرجاء ملء جميع الحقول الإلزامية</span>
-        <span id="service-wait-alert">لقد قمت بإرسال طلب خدمة بالفعل. يمكنك إرسال طلب جديد بعد مرور 12 ساعة.</span>
-        <span id="comment-wait-alert">لقد أضفت تعليق بالفعل. يمكنك إضافة تعليق جديد بعد مرور 12 ساعة.</span>
-        <span id="comment-empty-alert">الرجاء كتابة تعليق قبل الإرسال</span>
-        <span id="wait-service">انتظر 12 ساعة للإرسال</span>
-        <span id="wait-comment">انتظر 12 ساعة للإرسال</span>
-      `;
-      document.body.appendChild(hiddenElements);
-      
-      // تحميل التعليقات من التخزين المحلي
-      loadCommentsFromStorage();
-      
-      // تحديث عدد التعليقات
-      updateCommentsCount();
-      
-      // تحديث حالة أزرار الإرسال
-      if (!checkLastSubmissionTime('service')) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fas fa-clock"></i> انتظر 12 ساعة للإرسال';
-        setInterval(() => updateCountdown('service'), 1000);
+
+    // إضافة تعليق
+    document.getElementById('commentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const commentText = document.getElementById('userComment').value;
+
+      if (!commentText.trim()) {
+        alert("الرجاء كتابة ملاحظة قبل الإرسال");
+        return;
       }
-      
-      if (!checkLastSubmissionTime('comment')) {
-        const commentBtn = document.getElementById('commentBtn');
-        commentBtn.disabled = true;
-        commentBtn.innerHTML = '<i class="fas fa-clock"></i> انتظر 12 ساعة للإرسال';
-        setInterval(() => updateCountdown('comment'), 1000);
-      }
-      
-      // تحديث العد التنازلي
-      updateCountdown('service');
-      updateCountdown('comment');
-      
-      // إضافة مستمعي الأحداث للنماذج
-      document.getElementById('commentForm').addEventListener('submit', handleComment);
+
+      const today = new Date().toLocaleDateString("ar-EG", { day: 'numeric', month: 'long', year: 'numeric' });
+      const comment = { text: commentText, date: today };
+      addCommentToContainer(comment);
+      document.getElementById('userComment').value = '';  // إعادة تعيين النموذج
     });
+
+    // إضافة التعليق إلى الحاوية
+    function addCommentToContainer(comment) {
+      const commentContainer = document.createElement('div');
+      commentContainer.classList.add('comment');
+      commentContainer.innerHTML = `<span class="date">${comment.date}</span><p>${comment.text}</p>`;
+      document.getElementById('commentsContainer').prepend(commentContainer);
+    }
   </script>
 </body>
 </html>
